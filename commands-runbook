@@ -1,0 +1,15 @@
+#creation of pod - imperative,
+kubectl run nginx-app --image=nginx --port=80 
+
+#creation of service to expose application running inside pod,  
+kubectl expose pod nginx-app  --type=NodePort --name=nginx-service --port=8080
+
+kubectl get pods
+
+kubectl get nodes
+
+kubectl get services
+
+
+
+
