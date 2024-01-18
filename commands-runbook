@@ -18,5 +18,7 @@ kubectl get services
 #scaling replicas
 kubectl scale rs nginx-rs --replicas=5
 
+#The NoSchedule pods on master
+kubectl taint nodes ip-172-31-10-149  node-role.kubernetes.io/master:NoSchedule
 #command to label nodes under ROLES as required
 kubectl label nodes  ip-172-31-10-149 node-role.kubernetes.io/master=Master
