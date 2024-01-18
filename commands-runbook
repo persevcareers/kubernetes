@@ -4,7 +4,7 @@ kubectl run nginx-app --image=nginx --port=80
 #creation of service to expose application running inside pod,  
 kubectl expose pod nginx-app --type=NodePort --name=nginx-service --port=80
 
-#creation of service to expose application running inside pod with nodeport value
+#creation of service to expose application runnig inside pod with nodeport value
 kubectl expose pod nginx-app --type=NodePort --name=webapp-service1 --port=80 --target-port=80 --node-port=32000
 
 #List the pods
