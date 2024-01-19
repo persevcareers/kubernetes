@@ -33,7 +33,7 @@ sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables ne
 
 ===============================================
 
-2.https://github.com/containerd/containerd/blob/main/docs/getting-started.md
+https://github.com/containerd/containerd/blob/main/docs/getting-started.md
 Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
@@ -69,7 +69,7 @@ version = 2
 sudo systemctl restart containerd
 =================================================
 
-3.These instructions are for Kubernetes 1.29.
+These instructions are for Kubernetes 1.29.
 
 Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
@@ -108,4 +108,5 @@ Installing Networking solution:
 
 https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
 
-Please execute: https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
+Please execute: sudo  kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
