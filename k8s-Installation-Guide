@@ -1,3 +1,8 @@
+Pre-req:
+A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
+2 GB or more of RAM per machine (any less will leave little room for your apps).
+2 CPUs or more.
+
 https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd
 
 Forwarding IPv4 and letting iptables see bridged traffic
