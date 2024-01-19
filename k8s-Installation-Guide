@@ -1,9 +1,9 @@
 Pre-req:
-A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
+1.A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
 2 GB or more of RAM per machine (any less will leave little room for your apps).
 2 CPUs or more.
 
-https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd
+2.https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd
 
 Forwarding IPv4 and letting iptables see bridged traffic
 Execute the below mentioned instructions:
@@ -26,19 +26,19 @@ EOF
 # Apply sysctl params without reboot
 sudo sysctl --system
 ===============================================
-Verify that the br_netfilter, overlay modules are loaded by running the following commands:
+3.Verify that the br_netfilter, overlay modules are loaded by running the following commands:
 
 lsmod | grep br_netfilter
 lsmod | grep overlay
 ==============================================
-Verify that the net.bridge.bridge-nf-call-iptables, net.bridge.bridge-nf-call-ip6tables, and net.ipv4.ip_forward system variables are set to 1 in your sysctl config by running the following command:
+4.Verify that the net.bridge.bridge-nf-call-iptables, net.bridge.bridge-nf-call-ip6tables, and net.ipv4.ip_forward system variables are set to 1 in your sysctl config by running the following command:
 
 
 sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
 
 ===============================================
 
-https://github.com/containerd/containerd/blob/main/docs/getting-started.md
+5.https://github.com/containerd/containerd/blob/main/docs/getting-started.md
 Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
@@ -53,12 +53,12 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ==================================================
-To install the latest version, run:
+6.To install the latest version, run:
 
  sudo apt-get install  containerd.io 
 ==================================================
 
-You can find this file under the path /etc/containerd/config.toml
+7.You can find this file under the path /etc/containerd/config.toml
 
 version = 2
 [plugins]
@@ -71,10 +71,10 @@ version = 2
             SystemdCgroup = true
 
 
-sudo systemctl restart containerd
+8.sudo systemctl restart containerd
 =================================================
 
-These instructions are for Kubernetes 1.29.
+9.These instructions are for Kubernetes 1.29.
 
 Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
@@ -83,7 +83,7 @@ sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 
 ====================================================
-Download the public signing key for the Kubernetes package repositories. The same signing key is used for all repositories so you can disregard the version in the URL:
+10.Download the public signing key for the Kubernetes package repositories. The same signing key is used for all repositories so you can disregard the version in the URL:
 
 # If the folder `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
 # sudo mkdir -p -m 755 /etc/apt/keyrings
@@ -92,7 +92,7 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --
 
 ======================================
 
-Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.29; for other Kubernetes minor versions, you need to change the Kubernetes minor version in the URL to match your desired minor version (you should also check that you are reading the documentation for the version of Kubernetes that you plan to install).
+11.Add the appropriate Kubernetes apt repository. Please note that this repository have packages only for Kubernetes 1.29; for other Kubernetes minor versions, you need to change the Kubernetes minor version in the URL to match your desired minor version (you should also check that you are reading the documentation for the version of Kubernetes that you plan to install).
 
 # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -108,7 +108,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ===============================================
 
 
-CNI:
+12.CNI:
 Installing Networking solution: 
 
 https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
