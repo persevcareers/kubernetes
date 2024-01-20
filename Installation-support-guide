@@ -1,0 +1,94 @@
+The overlay module is part of the Linux kernel and is commonly used in container orchestration systems like Docker and Kubernetes. It provides a file system overlay that allows multiple layers of file systems to be combined into a single, unified view. This is crucial for containerization as it enables the creation of lightweight and shareable container images by layering file systems.
+
+br_netfilter (Bridge Netfilter):
+
+Purpose: The br_netfilter module is related to networking and is used in the context of Linux bridging and network filtering. It is commonly employed in scenarios where containers need to communicate with each other and the external network.
+
+Are loading the "overlay" and "br_netfilter" modules into the kernel, ensuring that these modules are available for use. This is often part of the setup process for systems running containerization platforms like Docker or Kubernetes, which rely on these kernel modules for filesystem overlay and networking functionalities, respectively.
+
+
+
+The sudo sysctl --system command is used to apply changes made to the kernel parameters through the sysctl utility without requiring a system reboot.
+
+sudo install -m 0755 -d /etc/apt/keyrings
+This command creates the directory /etc/apt/keyrings if it doesn't exist, which is where the Docker repository GPG key will be stored.
+
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+These commands download the Docker GPG key, convert it into a format suitable for APT, and save it to /etc/apt/keyrings/docker.gpg. The keyring file's permissions are then adjusted.
+
+
+
+The commands sudo modprobe overlay and sudo modprobe br_netfilter are used to load kernel modules into the Linux kernel. Let me explain each command:
+
+sudo modprobe overlay:
+
+This command loads the overlay kernel module. Overlay is a union filesystem, which is used in container runtimes like Docker and containerd to provide a layered file system for containers. It allows layers to be stacked on top of each other, enabling efficient storage and sharing of common layers between containers.
+sudo modprobe br_netfilter:
+
+This command loads the br_netfilter kernel module. The br_netfilter module is part of the Linux bridge network stack and is used for enabling packet filtering for bridges. In the context of container orchestration platforms like Kubernetes, it's essential for proper networking and communication between containers.
+
+
+sudo apt-get update
+This command updates the local package database on the Ubuntu system. It ensures that the package manager (APT) has the latest information about available packages and versions.
+
+
+sudo apt-get install ca-certificates curl gnupg
+This installs the necessary packages (ca-certificates, curl, and gnupg) that are needed for securely downloading and installing software packages.
+
+sudo install -m 0755 -d /etc/apt/keyrings
+This command creates a directory (/etc/apt/keyrings) with the appropriate permissions to store GPG keyrings securely.
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+This downloads the Docker GPG key from the specified URL, and then the gpg --dearmor command converts it into a binary format that can be used by APT. The resulting binary key is saved as /etc/apt/keyrings/docker.gpg.
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+This downloads the Docker GPG key from the specified URL, and then the gpg --dearmor command converts it into a binary format that can be used by APT. The resulting binary key is saved as /etc/apt/keyrings/docker.gpg.
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+$(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+This command appends the Docker repository information to the APT sources list. It specifies the Docker repository URL, architecture, and the location of the Docker GPG key.
+
+sudo apt-get update
+This command updates the package information again, but now with the newly added Docker repository. It ensures that APT has the latest information about Docker packages.
+
+ sudo apt-get install  containerd.io 
+
+
+version = 2
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    [plugins."io.containerd.grpc.v1.cri".containerd]
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+version = 2: Specifies the version of the configuration file format.
+
+[plugins]: This section begins the configuration for containerd plugins.
+
+[plugins."io.containerd.grpc.v1.cri"]: Focuses on the CRI plugin within containerd.
+
+[plugins."io.containerd.grpc.v1.cri".containerd]: Configures containerd's runtime.
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes]: Configures the runtimes used by containerd.
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]: Specifically configures the runc runtime.
+
+runtime_type = "io.containerd.runc.v2": Specifies that the container runtime type is runc and its version is v2.
+
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]: Provides options for the runc runtime.
+
+SystemdCgroup = true: This option is set to true and indicates that systemd cgroups should be used. Systemd is an init system and service manager, and cgroups are a Linux kernel feature used to limit, account for, and isolate resource usage (such as CPU, memory, disk I/O) of a collection of processes.
+
+sudo apt-get install -y kubelet kubeadm kubectl
+This command installs the Kubernetes tools:
+kubelet: Manages the state of individual nodes in a Kubernetes cluster.
+kubeadm: Provides commands to bootstrap and manage Kubernetes clusters.
+kubectl: A command-line tool for interacting with Kubernetes clusters.
+sudo apt-mark hold kubelet kubeadm kubectl
+
+This command marks (hold) the specified packages (kubelet, kubeadm, kubectl) to prevent them from being automatically upgraded by the package manager. Pinning the versions ensures that specific versions are retained and not automatically updated, which is important for maintaining cluster stability and compatibility.
