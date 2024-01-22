@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node
+            operator: In
+            values:
+            - medium
+
+Operator:
+
+matchExpressions:
+- key: node
+  operator: In
+  values:
+  - medium
+  - large
+
+=================================
+NotIn:
+
+The NotIn operator checks if the label value is not in a set of values.
+matchExpressions:
+- key: node
+  operator: NotIn
+  values:
+  - small
+
+=========================
+Exists:
+
+The Exists operator checks if the label key exists.
+
+matchExpressions:
+- key: node
+  operator: Exists
+  =====================
+  DoesNotExist:
+
+The DoesNotExist operator checks if the label key does not exist.
+
+  matchExpressions:
+- key: node
+  operator: DoesNotExist
+
+
+
+====================================
+
+
+requiredDuringSchedulingIgnoredDuringExecution: The scheduler can't schedule the Pod unless the rule is met. This functions like nodeSelector, but with a more expressive syntax.
+preferredDuringSchedulingIgnoredDuringExecution: The scheduler tries to find a node that meets the rule. If a matching node is not available, the scheduler still schedules the Pod.
