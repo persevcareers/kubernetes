@@ -1,3 +1,4 @@
+Section1 commands:
 #creation of pod - imperative,
 kubectl run nginx-app --image=nginx --port=80 
 
@@ -15,7 +16,7 @@ kubectl get nodes
 
 #List the sevices in the cluster
 kubectl get services
-#scaling replicas
+**scaling replicas**
 kubectl scale rs nginx-rs --replicas=5
 
 #The NoSchedule pods on master
@@ -23,7 +24,15 @@ kubectl taint nodes ip-172-31-10-149  node-role.kubernetes.io/master:NoSchedule
 #command to label nodes under ROLES as required
 kubectl label nodes  ip-172-31-10-149 node-role.kubernetes.io/master=Master
 
-Scheduling Pods - Node Selector:
+namespace
+Creating namespaces:
+kubectl apply -f create-namespace.yml
+Get ns:
+kubectl get ns
+
+scheduling-nodeselector
 kubectl label nodes node-name key=value
 kubectl label nodes ip-172-31-34-137 node=medium
+
+This will ensure to
 
