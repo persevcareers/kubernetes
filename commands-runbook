@@ -39,6 +39,26 @@ kubectl label nodes ip-172-31-34-137 node=medium
 to unlabel:
 kubectl label nodes ip-172-31-34-137 node-
 
+rollout:
+kubectl rollout history deployment <deployment-name>
+
+kubectl rollout status deployment <deployment-name>
+
+kubectl rollout pause deployment <deployment-name>
+
+
+kubectl rollout resume deployment <deployment-name>
+
+
+kubectl rollout restart deployment <deployment-name>
+
+
+kubectl rollout undo deployment <deployment-name> [--to-revision=<revision>]
+
+
+kubectl rollout undo deployment <deployment-name> --to-revision=<revision>
+
+
 create secrets:
 kubectl create secret docker-registry dockerhub-creds --docker-server=docker.io --docker-username=persevcareers6577 --docker-password=Passw0rd03
 
