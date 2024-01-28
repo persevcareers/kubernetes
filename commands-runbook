@@ -53,7 +53,7 @@ kubectl rollout resume deployment <deployment-name>
 kubectl rollout restart deployment <deployment-name>
 
 
-kubectl rollout undo deployment <deployment-name> [--to-revision=<revision>]
+kubectl rollout undo deployment <deployment-name> 
 
 
 kubectl rollout undo deployment <deployment-name> --to-revision=<revision>
