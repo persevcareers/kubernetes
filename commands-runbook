@@ -60,7 +60,7 @@ kubectl rollout undo deployment <deployment-name> --to-revision=<revision>
 
 
 create secrets:
-kubectl create secret docker-registry dockerhub-creds --docker-server=docker.io --docker-username=persevcareers6577 --docker-password=Passw0rd03
+kubectl create secret docker-registry dockerhub-creds --docker-server=docker.io --docker-username=persevcareers6577 --docker-password=*****
 
 
 
