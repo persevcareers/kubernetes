@@ -11,4 +11,4 @@ spec:
   initContainers:
   - name: busybox-init
     image: busybox
-    command: ['sh', '-c', 'echo pre-tasks are completed']
+    command: ['sh', '-c', 'echo pre-tasks are performed']
