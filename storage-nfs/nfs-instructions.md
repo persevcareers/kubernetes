@@ -37,6 +37,7 @@ Add a line in the following format to the exports file:
 ```
 **Restart NFS Server:**
 After making changes to the exports file, you need to restart the NFS server service (nfs-kernel-server) for the changes to take effect and the shared directories to become available to NFS clients.
+```bash
 sudo systemctl restart nfs-kernel-server
-
+```
 
