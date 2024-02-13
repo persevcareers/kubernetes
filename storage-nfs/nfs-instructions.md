@@ -1,13 +1,15 @@
 **For Ubuntu/Debian:**
 
 **Update Package Repositories:**
+This command updates the package repositories on your Ubuntu system to ensure you have the latest package information.
 ```bash
 sudo apt update
 ```
-Explanation: This command updates the package repositories on your Ubuntu system to ensure you have the latest package information.
+This command updates the package repositories on your Ubuntu system to ensure you have the latest package information.
 
 **Install NFS Server Package:**
 
+This command installs the NFS server package (nfs-kernel-server) on your Ubuntu system, which allows your system to act as an NFS server and share directories over the network.
 ```bash
 sudo apt install nfs-kernel-server
 ```
