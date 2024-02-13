@@ -8,3 +8,16 @@ spec:
   resources:
     requests:
       storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-storage-class  # Optional: Define the storage class name
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: nfs-pv  # Optional: Specify a specific PV name
