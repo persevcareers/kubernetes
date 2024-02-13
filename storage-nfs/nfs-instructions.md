@@ -28,6 +28,7 @@ sudo vi /etc/exports
 ```
 
 **Add a line in the following format:**
+
 Add a line in the following format to the exports file:
 /path/to/directory client_IP(options)
 
@@ -45,21 +46,25 @@ sudo systemctl restart nfs-kernel-server
 **Configuring NFS Client on Client Machine:**
 
 **Install NFS Client Package:**
+
 These commands update the package repositories and then install the NFS client package (nfs-common) on the client machine, which allows it to mount NFS shares from remote servers.
 ```bash
 sudo apt update
 sudo apt install nfs-common
 ```
 **Create Directory to Mount NFS Share:**
+
 This command creates a directory (/shared/data) on the client machine where the NFS share will be mounted.
 ```bash
 sudo mkdir -p /shared/data
 ```
 
 **Mount NFS Share:**
+
 This command mounts the NFS share from the NFS server (identified by server_IP) to the directory you created on the client machine (/shared/data). Replace server_IP with the IP address of the NFS server and /nfs/share with the path to the shared directory on the server.
 ```bash
 sudo mount -t nfs nfs_server_IP:/nfs/share /shared/data
 ```
 **Access NFS Share:**
+
 The NFS share is now mounted on the client machine at /shared/data, allowing you to read from and write to the shared directory /nfs/share as if it were a local directory on the client machine.
