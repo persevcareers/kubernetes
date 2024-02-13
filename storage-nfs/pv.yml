@@ -10,3 +10,16 @@ spec:
   nfs:
     server: <nfs_server_ip_or_hostname>
     path: /path/to/nfs/share
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 172.31.35.87
+    path: /nfs/share
