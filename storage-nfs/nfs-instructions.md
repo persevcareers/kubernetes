@@ -4,6 +4,7 @@
 ```bash
 sudo apt update
 ```
+Explanation: This command updates the package repositories on your Ubuntu system to ensure you have the latest package information.
 **Install NFS Server Package:**
 
 ```bash
