@@ -23,3 +23,10 @@ spec:
   nfs:
     server: 172.31.35.87
     path: /nfs/share
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: example-pv
+spec:
+  persistentVolumeReclaimPolicy: Delete
