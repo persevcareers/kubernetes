@@ -28,3 +28,7 @@ It creates all different required resources in ingress-nginx namespace.
 Deployment of application , 
 kubectl apply of deployment-v1.yml and deployment-v2.yml two different paths with two different versions of a product.
 
+Deploy your application with manifest which have dpeloyment and svc as well.
+
+Post which , we can now deploy ingress resources which will be deploy gets external ip of the load balancer deployed during nginx ingress controller installation.
+
