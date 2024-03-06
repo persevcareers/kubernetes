@@ -4,7 +4,7 @@ To install the NGINX Ingress Controller on your Kubernetes cluster, follow these
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
-
+```
 It creates all different required resources in ingress-nginx namespace.
 
 Deployment of application , 
