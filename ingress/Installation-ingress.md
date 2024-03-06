@@ -1,4 +1,4 @@
-## Installation of NGINX Ingress Controller on Kubernetes Cluster
+## Installation of NGINX Ingress Controller on Google Kubernetes Cluster,GKE
 
 To install the NGINX Ingress Controller on your Kubernetes cluster, follow these steps:
 
