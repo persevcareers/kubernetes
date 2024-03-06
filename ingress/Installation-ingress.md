@@ -1,5 +1,24 @@
 ## Installation of NGINX Ingress Controller on Google Kubernetes Cluster,GKE
 
+Creating a GKE Cluster,
+
+Create a GKE cluster using GCP Console.
+
+Once cluster is available , to connect with the cluster ensure to installa gcloud cli and authlogin tools
+
+Installation gcloud CLI : https://cloud.google.com/sdk/docs/install on windows.
+
+```bash
+(New-Object Net.WebClient).DownloadFile("https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe", "$env:Temp\GoogleCloudSDKInstaller.exe")
+
+& $env:Temp\GoogleCloudSDKInstaller.exe
+
+```
+Install authentication ,
+```bash
+gcloud components install gke-gcloud-auth-plugin
+gke-gcloud-auth-plugin --version
+```bash
 To install the NGINX Ingress Controller on your Kubernetes cluster, follow these steps:
 
 ```bash
